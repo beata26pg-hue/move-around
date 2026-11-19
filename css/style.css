@@ -18,7 +18,7 @@ body {
     ;
 
     .allowed-space {
-        border: 2px solid black;
+        border: 2px solid grey;
         width: inherit;
         height: inherit;
         transition: opacity 0.4s ease-in-out;
