@@ -1,0 +1,76 @@
+body {
+    background-color: #fbfbfb;
+    box-sizing: border-box;
+    position: fixed;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    width: 80vw;
+    height: 80vh;
+    margin: 0% auto;
+    padding: 40px;
+    background-color: white;
+
+    .allowed-space {
+        border: 2px solid black;
+        width: inherit;
+        height: inherit;
+        transition: opacity 0.4s ease-in-out;
+
+    }
+
+}
+
+#movable-element {
+    position: absolute;
+    width: 200px;
+    height: 180px;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.guide {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+
+    .arrows {
+        display: flex;
+        gap: 20px;
+
+        div {
+            display: flex;
+            gap: 6px;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .up,
+        .down,
+        .right,
+        .left {
+            background-image: url("/./assets/images/arrow.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            width: 30px;
+            height: 30px;
+            display: inline-block;
+        }
+
+        .down {
+            transform: rotate(180deg);
+        }
+
+        .right {
+            transform: rotate(90deg);
+        }
+
+        .left {
+            transform: rotate(270deg);
+        }
+    }
+
+}
