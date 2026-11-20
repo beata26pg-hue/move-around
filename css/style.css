@@ -8,7 +8,6 @@ body {
 }
 
 .container {
-    position: relative;
     width: 80vw;
     height: 80vh;
     margin: 0% auto;
@@ -18,7 +17,8 @@ body {
     ;
 
     .allowed-space {
-        border: 2px solid grey;
+        position: relative;
+        border: 2px solid black;
         width: inherit;
         height: inherit;
         transition: opacity 0.4s ease-in-out;

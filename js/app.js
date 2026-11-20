@@ -1,10 +1,9 @@
 const container = document.querySelector(".container");
 const allowedSpace = document.querySelector(".allowed-space");
 const movableElement = document.querySelector("#movable-element");
-const border = 40;
 
-let x = 0;
-let y = 0;
+let x = allowedSpace.clientLeft;
+let y = allowedSpace.clientTop;
 
 const speed = 20;
 
@@ -13,33 +12,39 @@ function moveElement() {
     movableElement.style.top = y + "px";
 
 }
-// Positon an element on click inside the container
+// Position element on click inside
 container.addEventListener("click", (e) => {
-    x = e.clientX - movableElement.offsetWidth - border;
-    y = e.clientY - movableElement.offsetHeight / 2;
+
+    const rect = allowedSpace.getBoundingClientRect();
+
+    x = e.clientX - rect.left - movableElement.offsetWidth / 2;
+    y = e.clientY - rect.top - movableElement.offsetHeight / 2;
+
     checkBoundaries();
     moveElement();
 });
 
 function checkBoundaries() {
-    const maxX = container.clientWidth - movableElement.offsetWidth;
-    const maxY = container.clientHeight - movableElement.offsetHeight;
 
-    const minX = border
-    const minY = border;
+    const minX = allowedSpace.clientLeft;
+    const minY = allowedSpace.clientTop;
 
-    x = Math.max(0, Math.min(x, maxX));
-    y = Math.max(0, Math.min(y, maxY));
+    const maxX = allowedSpace.clientWidth - movableElement.offsetWidth;
+    const maxY = allowedSpace.clientHeight - movableElement.offsetHeight;
 
-    if (y >= maxY - border || x > maxX - border || x < minX || y < minY) {
+    x = Math.max(-15, x);
+    y = Math.max(-15, y)
+
+    x = Math.min(maxX + 15, x);
+    y = Math.min(maxY + 15, y);
+
+    if (y >= maxY || x > maxX || x < minX || y < minY) {
         movableElement.innerHTML = '<img src="./assets/images/dizzy.png" width="200" alt="svimmel smiley">';
         allowedSpace.style.border = '2px solid red';
     } else {
         movableElement.innerHTML = '<img src="./assets/images/happy.png" width="200" alt="glad smiley">';
         allowedSpace.style.border = '2px solid grey';
-
     }
-    console.log(x, y);
 }
 
 // Arrows directioons
@@ -66,6 +71,7 @@ document.addEventListener("keydown", (e) => {
     checkBoundaries();
     moveElement();
 });
+
 
 window.addEventListener("resize", () => {
     checkBoundaries();
