@@ -55,7 +55,7 @@ body {
         .down,
         .right,
         .left {
-            background-image: url("/./assets/images/arrow.jpg");
+            background-image: url("../assets/images/arrow.jpg");
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
